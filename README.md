@@ -11,6 +11,8 @@
 
 ---
 
+> **Disclaimer:** I have used Zorvyn's website links and logo details for the purpose of demonstrating my development capabilities tailored to the company's brand identity. If you click the other buttons on the landing page, they will redirect to the official Zorvyn-related website. If you don't reach the dashboard initially, you can return to the animation page and navigate to the dashboard from there.
+
 ### 🌐 Live Deployment & Reviewer Notes
 
 **Link:** [https://shivakarnati2004-zorvyn-financial.onrender.com](https://shivakarnati2004-zorvyn-financial.onrender.com)

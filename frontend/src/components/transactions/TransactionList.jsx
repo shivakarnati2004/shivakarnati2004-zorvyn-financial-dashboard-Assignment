@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { Search, SlidersHorizontal, ArrowUpDown, Pencil, Trash2, ChevronDown, X, Plus } from 'lucide-react';
 import { CATEGORIES, CATEGORY_ICONS } from '../../constants/categories';
 import { formatCurrency, formatDate } from '../../utils/helpers';
@@ -233,11 +234,25 @@ export default function TransactionList() {
             )}
           </div>
         ) : (
-          <>
-            {txs.map((tx) => (
-              <TransactionRow key={tx.id} tx={tx} />
-            ))}
-          </>
+          <motion.div
+            variants={{ hidden: { opacity: 0 }, show: { opacity: 1, transition: { staggerChildren: 0.05 } } }}
+            initial="hidden"
+            animate="show"
+          >
+            <AnimatePresence>
+              {txs.map((tx) => (
+                <motion.div
+                  key={tx.id}
+                  className="transaction-row-wrapper"
+                  variants={{ hidden: { opacity: 0, y: 10 }, show: { opacity: 1, y: 0 } }}
+                  exit={{ opacity: 0, x: -10 }}
+                  layout
+                >
+                  <TransactionRow tx={tx} />
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         )}
       </div>
 

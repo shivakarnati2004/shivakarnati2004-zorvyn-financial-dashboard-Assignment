@@ -2,6 +2,8 @@ import React from 'react';
 import { LayoutDashboard, ArrowLeftRight, Lightbulb, Settings, ChevronRight, Sun, Moon } from 'lucide-react';
 import useStore from '../../store/useStore';
 
+import { useNavigate } from 'react-router-dom';
+
 const navItems = [
   { id: 'dashboard', label: 'Dashboard', icon: LayoutDashboard },
   { id: 'transactions', label: 'Transactions', icon: ArrowLeftRight },
@@ -10,6 +12,7 @@ const navItems = [
 
 export default function Sidebar({ mobileOpen, onClose }) {
   const { activeTab, setActiveTab, role, setRole, darkMode, toggleDarkMode } = useStore();
+  const navigate = useNavigate();
 
   const handleNav = (id) => {
     setActiveTab(id);
@@ -36,7 +39,10 @@ export default function Sidebar({ mobileOpen, onClose }) {
         style={{ background: 'var(--bg-sidebar)' }}
       >
         {/* Logo */}
-        <div className="flex items-center gap-3 px-5 py-6 border-b border-white/5">
+        <div 
+          className="flex items-center gap-3 px-5 py-6 border-b border-white/5 cursor-pointer" 
+          onClick={() => navigate('/')}
+        >
           <img src="/favicon.png" alt="Zorvyn" className="w-9 h-9 object-contain" />
           <div>
             <div className="font-display font-bold text-white text-lg leading-none">Zorvyn</div>

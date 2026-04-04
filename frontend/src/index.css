@@ -197,6 +197,7 @@
 .transaction-row:hover {
   background: var(--bg-secondary);
 }
+.transaction-row-wrapper:last-child .transaction-row,
 .transaction-row:last-child {
   border-bottom: none;
 }
