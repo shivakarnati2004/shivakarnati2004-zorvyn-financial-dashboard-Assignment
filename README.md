@@ -18,7 +18,7 @@
   <img src="https://img.shields.io/badge/Three.js-Canvas-000000?style=for-the-badge&logo=three.js&logoColor=white" alt="Three.js"/>
   <img src="https://img.shields.io/badge/Framer_Motion-11-FF0066?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion"/>
   <img src="https://img.shields.io/badge/Recharts-2.12-22B5BF?style=for-the-badge" alt="Recharts"/>
-  <img src="https://img.shields.io/badge/Netlify-Ready-00C7B7?style=for-the-badge&logo=netlify&logoColor=white" alt="Netlify"/>
+  <img src="https://img.shields.io/badge/Render-Ready-46E3B7?style=for-the-badge&logo=render&logoColor=white" alt="Render"/>
 </p>
 
 ---
@@ -81,8 +81,8 @@ This project follows **enterprise software development principles** used at comp
 | 1 | **Product** | Defines the problem & features | Personal finance tracking with rich visualizations |
 | 2 | **Data** | Stores and manages all information | JSON persistence, RESTful CRUD, Zustand state |
 | 3 | **Architecture** | How services communicate | Decoupled monorepo (Frontend ↔ REST API ↔ Backend) |
-| 4 | **Infrastructure** | Where it runs | Netlify (Frontend) + Render/Railway (Backend) |
-| 5 | **DevOps** | Automated build & deploy | Netlify CI/CD, Git-based workflows |
+| 4 | **Infrastructure** | Where it runs | Render (Frontend Static Site + Backend Web Service) |
+| 5 | **DevOps** | Automated build & deploy | Render Blueprint & CI/CD |
 
 ---
 
@@ -215,8 +215,7 @@ User clicks toggle → Zustand toggleDarkMode()
 | **Concurrently** | Run frontend + backend dev servers in parallel |
 | **PostCSS + Autoprefixer** | CSS post-processing for browser compatibility |
 | **ESLint** | Code quality and style enforcement |
-| **Netlify** | Frontend CI/CD and static hosting |
-| **Render / Railway** | Backend hosting for the Express API |
+| **Render** | Unified platform for static frontend and Node.js backend |
 
 ---
 
@@ -259,7 +258,7 @@ zorvyn-finance-dashboard/
 │   │   ├── App.jsx              # Root: routing + theme sync
 │   │   ├── main.jsx             # Entry point
 │   │   └── index.css            # 600+ lines design system
-│   ├── netlify.toml             # Deployment config
+│   ├── render.yaml              # Deployment config
 │   ├── tailwind.config.js       # Tailwind customization
 │   ├── vite.config.js           # Vite + API proxy config
 │   └── package.json
@@ -384,29 +383,26 @@ Backend:   http://localhost:5000/api/transactions
 
 ## 🌍 Deployment Guide
 
-### Frontend → Netlify
+### Frontend & Backend → Render (Using render.yaml)
 
-The frontend includes a production-ready `netlify.toml` with:
-- ✅ SPA routing (all routes → `index.html`)
-- ✅ Security headers (X-Frame-Options, CSP, etc.)
-- ✅ Aggressive caching for static assets
+The project includes a `render.yaml` Blueprint which defines two services:
+- **Backend**: Node.js Web Service
+- **Frontend**: Static Site (Vite Build) served with rewriting to `index.html` for SPA routing
 
 **Steps:**
-1. Push code to GitHub
-2. Connect repo to [Netlify](https://netlify.com)
-3. Set **Base directory:** `frontend`
-4. Set **Build command:** `npm run build`
-5. Set **Publish directory:** `frontend/dist`
+1. Push your code to GitHub.
+2. Go to [Render](https://render.com) and sign in.
+3. Click **New** → **Blueprint**.
+4. Connect the repository.
+5. Render will detect the `render.yaml` and configure both services automatically.
 6. Deploy 🚀
 
-### Backend → Render
+### Alternative: Manual Render Deployment
 
-1. Create a new **Web Service** on [Render](https://render.com)
-2. Connect your GitHub repo
-3. Set **Root Directory:** `backend`
-4. Set **Build Command:** `npm install`
-5. Set **Start Command:** `node index.js`
-6. Add environment variable: `PORT=5000`
+1. Create a **Web Service** for the backend (Root Dir: `backend`, Command: `npm start`).
+2. Create a **Static Site** for the frontend (Root Dir: `frontend`, Build Command: `npm run build && npm install`, Publish Dir: `./dist`).
+3. Set the `VITE_API_URL` environment variable on the Static Site to point to the backend URL.
+4. Set a Redirect/Rewrite rule for `/*` -> `/index.html` to support React Router.
 
 ---
 
@@ -442,7 +438,7 @@ The frontend includes a production-ready `netlify.toml` with:
 - ⚡ **CSS Variables** — runtime theme switching without re-mount
 - ⚡ **Lazy loaded charts** — Recharts renders on viewport entry
 - ⚡ **Image sequence preloading** — canvas frames loaded asynchronously
-- ⚡ **Aggressive CDN caching** — Netlify headers for static assets (1yr `max-age`)
+- ⚡ **Aggressive CDN caching** — static assets optimized for Render edge caching
 
 ---
 
