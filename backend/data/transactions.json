@@ -1,10 +1,65 @@
 [
-  { "id": "t001", "date": "2026-04-03", "description": "Monthly Salary - Tech Corp", "category": "Salary", "type": "income", "amount": 85000, "note": "December salary credited" },
-  { "id": "t002", "date": "2026-04-02", "description": "Zomato Food Order", "category": "Food & Dining", "type": "expense", "amount": 450, "note": "" },
-  { "id": "t003", "date": "2026-04-02", "description": "Netflix Subscription", "category": "Subscriptions", "type": "expense", "amount": 649, "note": "Monthly" },
-  { "id": "t004", "date": "2026-04-01", "description": "Uber Rides", "category": "Transportation", "type": "expense", "amount": 820, "note": "" },
-  { "id": "t005", "date": "2026-03-31", "description": "Freelance UI Project", "category": "Freelance", "type": "income", "amount": 22000, "note": "Dashboard redesign" },
-  { "id": "t006", "date": "2026-03-30", "description": "Amazon Shopping", "category": "Shopping", "type": "expense", "amount": 3200, "note": "Electronics accessories" },
-  { "id": "t007", "date": "2026-03-29", "description": "Pharmacy - Apollo", "category": "Health", "type": "expense", "amount": 1100, "note": "" },
-  { "id": "t008", "date": "2026-03-28", "description": "Electricity Bill", "category": "Utilities", "type": "expense", "amount": 2400, "note": "TSSPDCL Nov bill" }
+  {
+    "id": "t002",
+    "date": "2026-04-02",
+    "description": "Zomato Food Order",
+    "category": "Food & Dining",
+    "type": "expense",
+    "amount": 450,
+    "note": ""
+  },
+  {
+    "id": "t003",
+    "date": "2026-04-02",
+    "description": "Netflix Subscription",
+    "category": "Subscriptions",
+    "type": "expense",
+    "amount": 649,
+    "note": "Monthly"
+  },
+  {
+    "id": "t004",
+    "date": "2026-04-01",
+    "description": "Uber Rides",
+    "category": "Transportation",
+    "type": "expense",
+    "amount": 820,
+    "note": ""
+  },
+  {
+    "id": "t005",
+    "date": "2026-03-31",
+    "description": "Freelance UI Project",
+    "category": "Freelance",
+    "type": "income",
+    "amount": 22000,
+    "note": "Dashboard redesign"
+  },
+  {
+    "id": "t006",
+    "date": "2026-03-30",
+    "description": "Amazon Shopping",
+    "category": "Shopping",
+    "type": "expense",
+    "amount": 3200,
+    "note": "Electronics accessories"
+  },
+  {
+    "id": "t007",
+    "date": "2026-03-29",
+    "description": "Pharmacy - Apollo",
+    "category": "Health",
+    "type": "expense",
+    "amount": 1100,
+    "note": ""
+  },
+  {
+    "id": "t008",
+    "date": "2026-03-28",
+    "description": "Electricity Bill",
+    "category": "Utilities",
+    "type": "expense",
+    "amount": 2400,
+    "note": "TSSPDCL Nov bill"
+  }
 ]
