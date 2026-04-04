@@ -9,6 +9,16 @@
   <em>A full-stack, production-ready dashboard built with scalability, performance, and premium UX in mind.</em>
 </p>
 
+---
+
+### 🌐 Live Deployment & Reviewer Notes
+
+**Link:** [https://shivakarnati2004-zorvyn-financial.onrender.com](https://shivakarnati2004-zorvyn-financial.onrender.com)
+
+> **Important:** Since the backend is deployed on Render's free tier, please allow **30 to 40 seconds** to load the initial animation and **10 to 15 seconds** for full website visibility upon first visit as the server wakes up.
+
+> **About the Animations:** The scrollytelling and UI animations displayed are a demonstration of my capabilities. I can work strictly under client requirements to create marvelous, stunning, storytelling animations and build high-quality UI/UX websites tailored specifically for Zorvyn.
+
 <p align="center">
   <img src="https://img.shields.io/badge/React-18.2-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React"/>
   <img src="https://img.shields.io/badge/Node.js-Express-339933?style=for-the-badge&logo=node.js&logoColor=white" alt="Node.js"/>
