@@ -88,6 +88,14 @@ app.delete('/api/transactions/:id', async (req, res) => {
     }
 });
 
+// --- Serve Frontend Static Build ---
+const buildPath = path.join(__dirname, '../frontend/dist');
+app.use(express.static(buildPath));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(buildPath, 'index.html'));
+});
+
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
 });
