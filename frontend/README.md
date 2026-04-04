@@ -1,68 +1,100 @@
-# Zorvyn — Finance Dashboard
+# Zorvyn — Finance Dashboard (Frontend)
 
-A clean, interactive, production-grade finance dashboard built with React, Tailwind CSS, Recharts, and Zustand.
+The React single-page application powering the Zorvyn Financial Dashboard.
 
 ---
 
 ## 🚀 Getting Started
 
-```bash
-cd finance-dashboard
-npm install
-npm run dev
-```
-Open http://localhost:5173
+> **Note:** This frontend is part of a full-stack monorepo. Run from the **root** directory for the best experience.
 
 ```bash
-npm run build   # production build
-npm run preview # preview prod build
+# From root:
+npm run install:all
+npm run dev
+```
+
+Or run the frontend standalone (API calls will fail without the backend):
+
+```bash
+cd frontend
+npm install
+npm run dev       # http://localhost:5173
+npm run build     # production build
+npm run preview   # preview production build
 ```
 
 ---
 
-## 🧠 Approach
+## 🧠 Architecture
 
-Broke the problem into self-contained layers:
-1. **Data layer** — 52 mock transactions (6 months, INR, realistic Indian finance context)
-2. **State layer** — Zustand with localStorage persistence; computed getters keep components clean
-3. **Component layer** — Modular, single-responsibility components; no prop drilling
-4. **Design layer** — CSS custom properties for theming, Sora + DM Sans fonts, responsive grid
+| Layer | Responsibility |
+|---|---|
+| **Pages** | Route-level containers (`Dashboard`, `Transactions`, `Insights`, `Landing`) |
+| **Components** | Modular, single-responsibility UI components grouped by domain |
+| **Store** | Zustand store with `persist` middleware — manages app state + async API calls |
+| **Services** | `api.js` — centralized fetch wrapper for all REST endpoints |
+| **Utils** | `helpers.js` (formatting, export), `dataHelpers.js` (chart data transforms) |
+| **Constants** | `categories.js` — category lists, icons, and color mappings |
 
 ---
 
 ## ✨ Features
 
-### Core
-- Dashboard with animated summary cards (Balance, Income, Expenses) + MoM % change
-- Area chart: Income vs Expenses / Net Balance toggle
-- Interactive donut chart with hover-to-highlight
-- Transactions table: search, multi-filter, sort, date range
-- Insights: top category, savings rate, expense trend, category ranking
-- Role-Based UI: Admin (full CRUD) / Viewer (read-only), switchable from sidebar
+### Core Dashboard
+- Animated summary cards (Balance, Income, Expenses) with month-over-month % change
+- Area chart: Income vs Expenses / Net Balance toggle (Recharts)
+- Interactive donut chart with hover-to-highlight active shape
+- Recent activity feed with "View all" navigation
 
-### Enhancements
-- Dark / Light mode (persisted)
-- Data persistence via localStorage
-- Export filtered transactions as CSV or JSON
-- Staggered animations and animated number counters
+### Transaction Management
+- Full CRUD via REST API (`GET`, `POST`, `PUT`, `DELETE`)
+- Search by description, category, or note
+- Multi-filter: type (income/expense), category, date range (1m/3m/6m/all)
+- Sort by date, amount, or category (ascending/descending)
+- Export filtered results as CSV or JSON
+
+### Insights
+- Top spending category analysis
+- Savings rate calculation
+- Month-over-month expense trend
+- Category ranking with progress bars
+- Smart contextual observations
+
+### UX Enhancements
+- Dark / Light mode (persisted via localStorage)
+- Role-Based UI: Admin (full CRUD) / Viewer (read-only)
+- 60fps staggered entry animations
+- Animated number counters with `requestAnimationFrame`
 - Fully responsive with mobile sidebar drawer
 - Graceful empty states with contextual CTAs
+- Two-click delete confirmation with 3s timeout
+
+### Landing Page
+- Premium scrollytelling hero with 152-frame canvas animation
+- Sections: Trusted Logos, Numbers, Solutions, Features, Process, Testimonials, About, CTA
+- Full responsive layout with media queries
 
 ---
 
-## 🏗️ Structure
+## 🏗️ Project Structure
 
 ```
-src/
+frontend/src/
 ├── components/
-│   ├── layout/         # Sidebar, Header
-│   ├── dashboard/      # SummaryCards, BalanceTrend, SpendingBreakdown, RecentTransactions
-│   ├── transactions/   # TransactionList, TransactionModal
-│   └── insights/       # InsightsPanel
-├── data/mockData.js    # 52 transactions + chart data generators
-├── pages/              # Dashboard, Transactions, Insights
-├── store/useStore.js   # Zustand store
-└── utils/helpers.js    # formatCurrency, export utils
+│   ├── layout/           # Sidebar, Header
+│   ├── dashboard/        # SummaryCards, BalanceTrend, SpendingBreakdown, RecentTransactions
+│   ├── transactions/     # TransactionList, TransactionModal
+│   ├── insights/         # InsightsPanel
+│   └── ScrollCanvas.jsx  # Scroll-linked canvas animation for landing page
+├── pages/                # Dashboard, Transactions, Insights, Landing
+├── store/useStore.js     # Zustand store (state + async actions + selectors)
+├── services/api.js       # REST API client
+├── utils/                # Formatting, data transforms, export utilities
+├── constants/            # Category definitions, icons, colors
+├── App.jsx               # Root router + DashboardLayout
+├── main.jsx              # Entry point (React 18 + BrowserRouter)
+└── index.css             # Global styles + CSS variables + landing page styles
 ```
 
 ---
@@ -80,4 +112,4 @@ Switch roles using the sidebar panel toggle (no login required for demo).
 
 ## 📦 Tech Stack
 
-React 18 · Vite · Tailwind CSS · Zustand · Recharts · date-fns · Lucide React
+React 18 · Vite · Tailwind CSS · Zustand · Recharts · Framer Motion · Three.js · date-fns · Lucide React

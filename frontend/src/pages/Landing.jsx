@@ -156,11 +156,9 @@ export default function Landing() {
             <p>Live dashboards and intelligent insights for informed decision making.</p>
           </div>
           <div className="feat-card">
-            <div className="feat-card">
-              <div className="feat-spark">✨</div>
-              <h3>Compliance First</h3>
-              <p>Built in regulatory compliance for SOC 2, ISO 27001, and more.</p>
-            </div>
+            <div className="feat-spark">✨</div>
+            <h3>Compliance First</h3>
+            <p>Built in regulatory compliance for SOC 2, ISO 27001, and more.</p>
           </div>
           <div className="feat-card">
             <div className="feat-spark">✨</div>

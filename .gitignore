@@ -1,31 +1,70 @@
-# Node dependencies
+# ========================
+# Node.js
+# ========================
 node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+pnpm-debug.log*
 
-# Build output
+# ========================
+# Build Output
+# ========================
 dist/
 build/
 .output/
+.next/
+.nuxt/
+.cache/
 
-# Environment variables
+# ========================
+# Environment Variables
+# ========================
 .env
 .env.local
+.env.development
 .env.development.local
 .env.test.local
+.env.production
 .env.production.local
 
-# IDE / OS
+# ========================
+# IDE / Editor Settings
+# ========================
 .vscode/
 .idea/
-.DS_Store
-Thumbs.db
+*.swp
+*.swo
+*~
 
+# ========================
+# OS Generated Files
+# ========================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# ========================
 # Logs
-logs
+# ========================
+logs/
 *.log
 
-# Project specific
-backend/data/*.json
-!backend/data/transactions.json
+# ========================
+# Dependency Lock Files (optional - keep if you want)
+# ========================
+# package-lock.json
+
+# ========================
+# Miscellaneous
+# ========================
+*.tgz
+.eslintcache
+.stylelintcache
+coverage/
+.gemini/

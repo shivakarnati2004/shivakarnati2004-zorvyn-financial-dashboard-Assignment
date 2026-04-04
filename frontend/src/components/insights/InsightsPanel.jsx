@@ -119,7 +119,7 @@ export default function InsightsPanel() {
           icon={Zap}
           title="Largest Transaction"
           value={largest ? formatCurrency(largest.amount, true) : '—'}
-          sub={largest ? `${largest.description.substring(0, 24)}...` : ''}
+          sub={largest ? (largest.description.length > 24 ? `${largest.description.substring(0, 24)}…` : largest.description) : ''}
           variant={3}
           color="#f59e0b"
         />
