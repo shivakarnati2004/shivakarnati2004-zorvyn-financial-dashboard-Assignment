@@ -17,7 +17,7 @@
 
 > **Important:** Since the backend is deployed on Render's free tier, please allow **30 to 40 seconds** to load the initial animation and **10 to 15 seconds** for full website visibility upon first visit as the server wakes up.
 
-> **About the Animations:** The scrollytelling and UI animations displayed are a demonstration of my capabilities. I can work strictly under client requirements to create marvelous, stunning, storytelling animations and build high-quality UI/UX websites tailored specifically for Zorvyn.
+> **About the Animations:** The scrollytelling and UI animations displayed are a demonstration of my capabilities. I can work strictly under client requirements to create marvelous, stunning, storytelling animations and build high-quality UI/UX websites tailored specifically for Zorvyn. Note: While testing animations natively using a browser agent might only show layout flaws (rather than pure animation framerate or jitter visually), device-specific lag can occasionally happen depending on hardware rendering capabilities.using normal deployments like render also can be lag or make late to load the animations.
 
 <p align="center">
   <img src="https://img.shields.io/badge/React-18.2-61DAFB?style=for-the-badge&logo=react&logoColor=white" alt="React"/>

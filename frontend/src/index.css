@@ -993,4 +993,12 @@ a { text-decoration: none; color: inherit; }
   .custom-footer { padding: 48px 20px 24px; }
   .footer-top { grid-template-columns: 1fr; gap: 28px; }
   .trusted { padding: 36px 20px; }
+  .hero { padding: 100px 20px 60px; }
+  .hero h1 { font-size: clamp(32px, 8vw, 42px); }
+  .hero-btns { flex-direction: column; width: 100%; gap: 12px; }
+  .btn-primary, .btn-ghost { width: 100%; justify-content: center; }
+  .hero-stats { flex-direction: column; gap: 24px; margin-top: 40px; }
+  .cta-btns { flex-direction: column; width: 100%; gap: 12px; }
+  .nav-cta { padding: 7px 12px; font-size: 13px; }
+  .ast-val { font-size: 24px; }
 }

@@ -14,7 +14,7 @@ function FilterBar() {
     <div className="space-y-3">
       <div className="flex gap-2 flex-wrap">
         {/* Search */}
-        <div className="relative flex-1 min-w-48">
+        <div className="relative w-full sm:flex-1 sm:min-w-48">
           <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2" style={{ color: 'var(--text-muted)' }} />
           <input
             className="input-base pl-9"
@@ -168,7 +168,7 @@ function TransactionRow({ tx }) {
 
       {/* Actions - admin only */}
       {role === 'admin' && (
-        <div className="flex items-center gap-1 opacity-0 group-hover:opacity-100 transition-opacity ml-2">
+        <div className="flex items-center gap-1 opacity-100 sm:opacity-0 sm:group-hover:opacity-100 transition-opacity ml-2">
           <button
             onClick={() => openModal('edit', tx)}
             className="p-1.5 rounded-lg transition-colors"
