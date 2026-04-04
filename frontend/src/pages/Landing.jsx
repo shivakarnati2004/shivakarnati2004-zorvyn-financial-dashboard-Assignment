@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { useScroll } from 'framer-motion';
+import { useScroll, motion, useTransform, useSpring } from 'framer-motion';
 import { Sun, Moon } from 'lucide-react';
 import ScrollCanvas from '../components/ScrollCanvas';
 import useStore from '../store/useStore';
@@ -13,6 +13,33 @@ export default function Landing() {
     offset: ['start start', 'end end'],
     layoutEffect: false
   });
+
+  // Create a buttery smooth spring value based on scroll
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
+  // Scene 1: 0% to 25%
+  const opacity1 = useTransform(smoothProgress, [0, 0.15, 0.25], [1, 1, 0]);
+  const y1 = useTransform(smoothProgress, [0, 0.15, 0.25], [0, 0, -50]);
+  const pointerEvents1 = useTransform(smoothProgress, (v) => v < 0.25 ? 'auto' : 'none');
+
+  // Scene 2: 20% to 50%
+  const opacity2 = useTransform(smoothProgress, [0.2, 0.3, 0.4, 0.5], [0, 1, 1, 0]);
+  const y2 = useTransform(smoothProgress, [0.2, 0.3, 0.4, 0.5], [50, 0, 0, -50]);
+  const pointerEvents2 = useTransform(smoothProgress, (v) => (v > 0.2 && v < 0.5) ? 'auto' : 'none');
+
+  // Scene 3: 45% to 75%
+  const opacity3 = useTransform(smoothProgress, [0.45, 0.55, 0.65, 0.75], [0, 1, 1, 0]);
+  const y3 = useTransform(smoothProgress, [0.45, 0.55, 0.65, 0.75], [50, 0, 0, -50]);
+  const pointerEvents3 = useTransform(smoothProgress, (v) => (v > 0.45 && v < 0.75) ? 'auto' : 'none');
+
+  // Scene 4: 70% to 100%
+  const opacity4 = useTransform(smoothProgress, [0.7, 0.8, 1], [0, 1, 1]);
+  const y4 = useTransform(smoothProgress, [0.7, 0.8, 1], [50, 0, 0]);
+  const pointerEvents4 = useTransform(smoothProgress, (v) => v > 0.7 ? 'auto' : 'none');
 
   return (
     <>
@@ -48,37 +75,62 @@ export default function Landing() {
       <div ref={containerRef} style={{ height: '400vh' }}>
         <section className="hero" id="home" style={{ position: 'sticky', top: 0, height: '100vh' }}>
           {/* We use ScrollCanvas entirely as a responsive background animation rather than the gradient */}
-          <ScrollCanvas scrollProgress={scrollYProgress} />
+          <ScrollCanvas scrollProgress={smoothProgress} />
           <div className="hero-grid"></div>
 
           <div className="hero-content">
-            <div className="badge-row">
-              <span className="custom-badge">SOC 2 Type II</span>
-              <span className="custom-badge">ISO 27001</span>
-              <span className="custom-badge">GDPR Compliant</span>
-              <span className="custom-badge">PCI DSS</span>
-            </div>
-
-            <h1>Building <span className="accent">Secure, Compliant,</span> and Intelligent Financial Systems</h1>
-            <p className="hero-sub">Enterprise grade financial infrastructure that scales with you. From startups to enterprises, we power the future of finance.</p>
-
-            <div className="hero-btns">
-              <Link to="/app" className="btn-primary">Enter Dashboard →</Link>
-              <a href="https://zorvyn.io/#how-it-works" target="_blank" rel="noreferrer" className="btn-ghost">▶&nbsp; See How It Works</a>
-            </div>
-
-            <div className="hero-stats">
-              <div className="hstat">
-                <div className="hstat-val">$2.4<span>B+</span></div>
-                <div className="hstat-lbl">Total Volume</div>
+            <motion.div 
+              className="hero-scene"
+              style={{ opacity: opacity1, y: y1, pointerEvents: pointerEvents1 }}
+            >
+              <div className="badge-row">
+                <span className="custom-badge">SOC 2 Type II</span>
+                <span className="custom-badge">ISO 27001</span>
+                <span className="custom-badge">GDPR Compliant</span>
+                <span className="custom-badge">PCI DSS</span>
               </div>
-              <div className="hstat">
-                <div className="hstat-val">99.99<span>%</span></div>
-                <div className="hstat-lbl">System Uptime</div>
-              </div>
-            </div>
+              <h1>Building <span className="accent">Secure, Compliant,</span> and Intelligent Financial Systems</h1>
+              <p className="hero-sub">Enterprise grade financial infrastructure that scales with you. From startups to enterprises, we power the future of finance.</p>
+            </motion.div>
 
-            <div className="scroll-hint">
+            <motion.div 
+              className="hero-scene"
+              style={{ opacity: opacity2, y: y2, pointerEvents: pointerEvents2 }}
+            >
+              <h1>Limitless Performance. <span className="accent">Uncompromising</span> Scale.</h1>
+              <p className="hero-sub">Process millions of complex financial transactions seamlessly across global markets with an architecture designed for infinite growth.</p>
+            </motion.div>
+
+            <motion.div 
+              className="hero-scene"
+              style={{ opacity: opacity3, y: y3, pointerEvents: pointerEvents3 }}
+            >
+              <h1>Bank-grade Security. <br/><span className="accent">Without</span> the Compromise.</h1>
+              <p className="hero-sub">End-to-end encryption with advanced ML fraud detection securing billions in transactions daily, keeping your operations seamless and safe.</p>
+            </motion.div>
+
+            <motion.div 
+              className="hero-scene"
+              style={{ opacity: opacity4, y: y4, pointerEvents: pointerEvents4 }}
+            >
+              <div className="hero-btns mb-12">
+                <Link to="/app" className="btn-primary">Enter Dashboard →</Link>
+                <a href="https://zorvyn.io/#how-it-works" target="_blank" rel="noreferrer" className="btn-ghost">▶&nbsp; See How It Works</a>
+              </div>
+
+              <div className="hero-stats">
+                <div className="hstat">
+                  <div className="hstat-val">$2.4<span>B+</span></div>
+                  <div className="hstat-lbl">Total Volume</div>
+                </div>
+                <div className="hstat">
+                  <div className="hstat-val">99.99<span>%</span></div>
+                  <div className="hstat-lbl">System Uptime</div>
+                </div>
+              </div>
+            </motion.div>
+
+            <div className="scroll-hint hidden md:flex">
               <div className="scroll-dot"></div>
               Scroll to explore
             </div>

@@ -24,21 +24,20 @@ export default function ScrollCanvas({ scrollProgress }) {
           loadedCount++;
           setProgress(Math.round((loadedCount / FRAME_COUNT) * 100));
           
-          if (loadedCount === FRAME_COUNT) {
-            setImages(imgArray);
+          if (loadedCount === 1) {
             setLoading(false);
           }
         };
         img.onerror = () => {
           console.error(`Failed to load /sequence/ezgif-frame-${frameNum}.png`);
           loadedCount++;
-          if (loadedCount === FRAME_COUNT) {
-            setImages(imgArray);
+          if (loadedCount === 1) {
             setLoading(false);
           }
         };
         imgArray.push(img);
       }
+      setImages(imgArray);
     };
     
     loadImages();
