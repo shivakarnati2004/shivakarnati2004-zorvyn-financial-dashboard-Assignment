@@ -27,10 +27,10 @@
     --radius2: 20px;
 
     /* ── Dashboard vars (dark mode is default) ── */
-    --bg-primary: #0d0f1a;
-    --bg-secondary: #12152b;
-    --bg-card: #181c35;
-    --bg-sidebar: #0b0e1a;
+    --bg-primary: transparent;
+    --bg-secondary: rgba(18, 21, 43, 0.5);
+    --bg-card: rgba(24, 28, 53, 0.4);
+    --bg-sidebar: rgba(11, 14, 26, 0.85);
     --text-primary: #f0f2ff;
     --text-secondary: #a0a8c8;
     --text-muted: #6b7194;
@@ -56,14 +56,14 @@
     --text3: #64748b;
 
     /* ── Dashboard vars ── */
-    --bg-primary: #f5f7fb;
-    --bg-secondary: #e8ecf4;
-    --bg-card: #ffffff;
+    --bg-primary: rgba(245, 247, 251, 0.75);
+    --bg-secondary: rgba(232, 236, 244, 0.7);
+    --bg-card: rgba(255, 255, 255, 0.85);
     --bg-sidebar: #0b0e1a;
     --text-primary: #1a1d2e;
     --text-secondary: #4a5068;
     --text-muted: #8a8fa8;
-    --border: rgba(0,0,0,0.08); /* Shared border for dashboard */
+    --border: rgba(0,0,0,0.10);
     --accent-light: rgba(108,99,255,0.08);
     --emerald-light: rgba(16,185,129,0.08);
     --coral-light: rgba(244,63,94,0.08);
@@ -71,10 +71,10 @@
 
   /* Re-apply dark mode dashboard vars when .dark is present */
   .dark {
-    --bg-primary: #0d0f1a;
-    --bg-secondary: #12152b;
-    --bg-card: #181c35;
-    --bg-sidebar: #0b0e1a;
+    --bg-primary: transparent;
+    --bg-secondary: rgba(18, 21, 43, 0.5);
+    --bg-card: rgba(24, 28, 53, 0.4);
+    --bg-sidebar: rgba(11, 14, 26, 0.85);
     --text-primary: #f0f2ff;
     --text-secondary: #a0a8c8;
     --text-muted: #6b7194;
@@ -174,11 +174,31 @@
   animation: slideUp 0.4s ease forwards;
 }
 
+/* ── Chatbot Styles ── */
+.typing-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--text-muted);
+  animation: typingBounce 1.2s ease-in-out infinite;
+}
+@keyframes typingBounce {
+  0%,60%,100% { transform: translateY(0); opacity: 0.4; }
+  30% { transform: translateY(-6px); opacity: 1; }
+}
+
+.custom-scrollbar::-webkit-scrollbar { width: 4px; }
+.custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+.custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(108,99,255,0.2); border-radius: 4px; }
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { background: rgba(108,99,255,0.4); }
+
 /* ── Dashboard component classes ── */
 .card {
   background: var(--bg-card);
+  backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
 .badge {
@@ -213,14 +233,16 @@
 
 .stat-card {
   background: var(--bg-card);
+  backdrop-filter: blur(16px);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 20px 24px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   transition: all 0.25s;
 }
 .stat-card:hover {
   border-color: rgba(108,99,255,0.3);
-  box-shadow: 0 4px 20px rgba(108,99,255,0.08);
+  box-shadow: 0 8px 32px rgba(108,99,255,0.15);
   transform: translateY(-2px);
 }
 

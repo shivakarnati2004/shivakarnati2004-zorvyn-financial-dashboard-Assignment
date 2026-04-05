@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Sidebar from './components/layout/Sidebar';
 import Header from './components/layout/Header';
 import TransactionModal from './components/transactions/TransactionModal';
+import FinanceBot from './components/dashboard/FinanceBot';
 import Dashboard from './pages/Dashboard';
 import Transactions from './pages/Transactions';
 import Insights from './pages/Insights';
@@ -58,6 +59,9 @@ function DashboardLayout() {
 
       {/* Modal */}
       <TransactionModal />
+
+      {/* Finance Chatbot */}
+      <FinanceBot />
     </div>
   );
 }

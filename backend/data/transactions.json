@@ -61,5 +61,23 @@
     "type": "expense",
     "amount": 2400,
     "note": "TSSPDCL Nov bill"
+  },
+  {
+    "description": "salary",
+    "amount": 100000,
+    "type": "income",
+    "category": "Salary",
+    "date": "2026-04-05",
+    "note": "",
+    "id": "t1775394225633-ogwwifs6x"
+  },
+  {
+    "description": "salary",
+    "amount": 10000000,
+    "type": "income",
+    "category": "Salary",
+    "date": "2026-04-05",
+    "note": "",
+    "id": "t1775394909175-s6h75rlma"
   }
 ]

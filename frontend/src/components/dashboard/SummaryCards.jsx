@@ -61,7 +61,7 @@ const cards = [
   },
 ];
 
-export default function SummaryCards() {
+export default function SummaryCards({ keys = ['balance', 'income', 'expenses'], className = "grid-cols-1 sm:grid-cols-3" }) {
   const { getSummary, transactions } = useStore();
   const summary = getSummary();
 
@@ -98,8 +98,10 @@ export default function SummaryCards() {
   };
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-      {cards.map(({ key, label, icon: Icon, border, iconBg, iconColor }) => {
+    <div className={`grid gap-4 ${className}`}>
+      {cards
+        .filter(card => keys.includes(card.key))
+        .map(({ key, label, icon: Icon, border, iconBg, iconColor }, idx) => {
         const change = changes[key];
         const value = values[key];
 
@@ -107,7 +109,7 @@ export default function SummaryCards() {
           <div
             key={key}
             className="card p-5 animate-slide-up"
-            style={{ animationDelay: key === 'balance' ? '0ms' : key === 'income' ? '80ms' : '160ms' }}
+            style={{ animationDelay: `${idx * 80}ms` }}
           >
             <div className="flex items-start justify-between mb-4">
               <div
